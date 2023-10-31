@@ -9,7 +9,7 @@ const EditForm = () => {
       <input 
       className='border border-slate-700 px-2 py-2 w-42 mb-4'
       type='text'
-      placeholder='Topic'
+      placeholder='Title'
       />
       <br/>
       <input 
@@ -21,9 +21,9 @@ const EditForm = () => {
       <div className='mt-3'>
       <label>Status: </label>
        <select>
-       <option value="someOption">OPEN</option>
-       <option value="otherOption">ONGOING</option>
-       <option value="otherOption">CLOSED</option>
+       <option value="OPEN">OPEN</option>
+       <option value="ONGOING">ONGOING</option>
+       <option value="CLOSED">CLOSED</option>
 
        </select>
       </div>

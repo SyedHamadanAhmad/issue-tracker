@@ -9,7 +9,7 @@ const CreateIssue = () => {
       <input 
       className='border border-slate-700 px-2 py-2 w-42 mb-4'
       type='text'
-      placeholder='Topic'
+      placeholder='Title'
       />
       <br/>
       <input 
