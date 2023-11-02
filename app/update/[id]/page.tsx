@@ -2,7 +2,7 @@ import React from 'react'
 import EditForm from '@/app/editForm'
 
 
-const getIssueByID= async (id: string)=>{
+export const getIssueByID= async (id: string)=>{
   try {
     const res = await fetch(`http://localhost:3000/api/Issues/${id}`,{
       cache:"no-store"
@@ -23,8 +23,7 @@ const EditIssue = async ({params}) => {
 
 
   const {id}=params
-  const {issue}= await getIssueByID(id)
- 
+  
   
 
   return (

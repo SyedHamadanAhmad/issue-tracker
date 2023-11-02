@@ -4,12 +4,11 @@ import { Container } from '@mui/material'
 import { useRouter } from 'next/navigation'
 
 type EditFormProps = {
-  id: number, // or string, depending on your data
-  title: string,
-  description: string
+  id: string, 
+  
 }
 
-const EditForm = ({id, title, description}: EditFormProps) => {
+const EditForm = ({id}: EditFormProps) => {
   const router=useRouter();
 
   const [newTitle, setnewTitle]=useState("")
@@ -17,6 +16,7 @@ const EditForm = ({id, title, description}: EditFormProps) => {
   const [newStatus, setnewStatus]=useState("OPEN")
   
   const handleSubmit=async (e)=>{
+    
     e.preventDefault();
     try {
       const res =  await fetch(`http://localhost:3000/api/Issues/${id}`,{
@@ -44,6 +44,7 @@ const EditForm = ({id, title, description}: EditFormProps) => {
       className='border border-slate-700 px-2 py-2 w-42 mb-4'
       type='text'
       placeholder='Title'
+      required={true}
       />
       <br/>
       <input 
@@ -52,6 +53,7 @@ const EditForm = ({id, title, description}: EditFormProps) => {
       className='h-24 w-96 border border-slate-700 px-2 py-2 w-42'
       type='text'
       placeholder='Description'
+      required={true}
       />
        <br/>
       <div className='mt-3'>

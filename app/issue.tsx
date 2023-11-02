@@ -5,7 +5,7 @@ import RemoveBtn from './removebtn'
 import {AiTwotoneEdit} from 'react-icons/ai'
 
 
-const getIssues = async()=>{
+export const getIssues = async()=>{
   try {
     const res = await fetch('http://localhost:3000/api/Issues', {
       cache:"no-store",

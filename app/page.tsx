@@ -1,9 +1,14 @@
-import Image from 'next/image'
+'use client'
 import Issue from './issue'
+import ChartData from './chart'
 export default function Home() {
   return (
-  
-   <Issue/>
+  <>
+  <ChartData/>
+  <Issue/>
+  </>
+   
+   
    
   )
 }
