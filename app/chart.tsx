@@ -18,7 +18,7 @@ const {closed}=await getClosed()
 const {ongoing}=await getOngoing()
     
   return (
-   <Container className='flex justify-between'>
+   <Container className='flex justify-between my-4'>
     <div className="ml-5"style={{width:300}}>
     <Doughnut 
       data={{
