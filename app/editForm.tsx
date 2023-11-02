@@ -1,10 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Container } from '@mui/material'
 import { useRouter } from 'next/navigation'
 
 type EditFormProps = {
   id: string, 
+  title: string,
+  description:string
   
 }
 
@@ -15,7 +17,7 @@ const EditForm = ({id, title, description}: EditFormProps) => {
   const [newDescription, setnewDescription]=useState(description)
   const [newStatus, setnewStatus]=useState("OPEN")
   
-  const handleSubmit=async (e)=>{
+  const handleSubmit=async (e:FormEvent)=>{
     
     e.preventDefault();
     try {

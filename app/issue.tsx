@@ -4,7 +4,12 @@ import { Container } from '@mui/material'
 import RemoveBtn from './removebtn'
 import {AiTwotoneEdit} from 'react-icons/ai'
 
-
+interface issue{
+  _id:string,
+  title:string,
+  description:string,
+  status:string
+}
 export const getIssues = async()=>{
   try {
     const res = await fetch('http://localhost:3000/api/Issues', {
@@ -26,7 +31,7 @@ const Issue = async () => {
   const { issues }=await getIssues();
   return(
     <Container>
-     {issues.map((issue)=>{
+     {issues.map((issue:issue)=>{
       return(
         <div key={issue._id} className='flex justify-between border border-slate-700 my-4 p-3 items-start'>
            <div>

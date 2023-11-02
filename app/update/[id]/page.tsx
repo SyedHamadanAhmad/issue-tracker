@@ -19,7 +19,7 @@ export const getIssueByID= async (id: string)=>{
 }
 
 
-const EditIssue = async ({params}) => {
+const EditIssue = async ({params}: {params: any}) => {
  
 
   const {id}=params

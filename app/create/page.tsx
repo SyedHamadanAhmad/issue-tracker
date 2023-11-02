@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Container } from '@mui/material'
 import { useRouter } from 'next/navigation'
 
@@ -9,7 +9,7 @@ const CreateIssue = () => {
 
   const router=useRouter()
 
-  const handleSubmit=async (e)=>{
+  const handleSubmit=async (e:FormEvent)=>{
     e.preventDefault();
     
     if(!title || !description){
