@@ -20,16 +20,18 @@ export const getIssueByID= async (id: string)=>{
 
 
 const EditIssue = async ({params}) => {
-
+ 
 
   const {id}=params
   
+  const {issues}=await getIssueByID(id)
+  const title=issues.title 
+  const description=issues.description
   
-
   return (
    
 
-   <EditForm id={id}/>
+   <EditForm id={id} title={title} description={description}/>
   )
 }
 

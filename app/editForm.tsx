@@ -8,11 +8,11 @@ type EditFormProps = {
   
 }
 
-const EditForm = ({id}: EditFormProps) => {
+const EditForm = ({id, title, description}: EditFormProps) => {
   const router=useRouter();
 
-  const [newTitle, setnewTitle]=useState("")
-  const [newDescription, setnewDescription]=useState("")
+  const [newTitle, setnewTitle]=useState(title)
+  const [newDescription, setnewDescription]=useState(description)
   const [newStatus, setnewStatus]=useState("OPEN")
   
   const handleSubmit=async (e)=>{
