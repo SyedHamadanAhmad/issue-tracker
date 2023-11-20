@@ -11,21 +11,26 @@ interface Props{
 
 const Profile = async ({params}:{params:{name:string}}) => {
     const name=params.name.split('%20').join(' ')
+
     const session=await getServerSession(authOptions)
-    if(!session){
-        redirect('/')
-    }
 
-
+    const img=session && session!.user!.image
+    const email=session && session!.user!.email
     
     
+
+  
+    
+
+    
+
   return (
    <Container>
     <div className='flex'>
-    <img className="h-20" src={session!.user!.image!} alt="profile"/>
+    <img className="h-20" src={img!} alt="profile"/>
     <div>
     <h1 className='font-bold text-2xl mx-4 my-2'>{name}</h1>
-    <h2 className='mx-4 my-2'>{session!.user!.email}</h2>
+    <h2 className='mx-4 my-2'>{email}</h2>
     </div>
    
     </div>

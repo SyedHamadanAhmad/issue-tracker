@@ -13,6 +13,10 @@ const issueSchema= new Schema(
         name:{
             type:String,
             default:"Anonymous"
+        },
+        email:{
+            type:String,
+            default:"xyz@gmail.com"
         }
     }
     ,{
@@ -20,6 +24,6 @@ const issueSchema= new Schema(
     }
 )
 
-const Issue=  mongoose.models.Issue || mongoose.model("Issue", issueSchema) 
+const Issue= mongoose.models.Issue|| mongoose.model("Issue", issueSchema) 
 
 export default Issue

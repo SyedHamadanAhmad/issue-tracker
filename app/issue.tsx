@@ -38,7 +38,7 @@ const Issue = async () => {
            <div>
             <div className='flex'>
             <h1 className='font-bold text-xl'>{issue.title}</h1>
-            <h2 className='mx-5 font-extralight'>{issue.name}</h2>
+            <h2 className='mx-5 font-extralight'>Last updated by: {issue.name}</h2>
             </div>
            
 

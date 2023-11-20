@@ -8,8 +8,9 @@ export async function POST(request:NextRequest){
     const {title, description}=await request.json()
     const session=await getServerSession(authOptions)
     const name=session!.user!.name
+    const email=session!.user!.email
     await connectMongoDB();
-    await Issue.create({title, description, name})
+    await Issue.create({title, description, name, email})
     return NextResponse.json({message:`Issue ${title} created`}, {status:201})
 }
 

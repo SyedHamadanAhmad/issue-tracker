@@ -11,8 +11,9 @@ export async function PUT(request:NextRequest, {params}){
     const {newTitle:title, newDescription:description, newStatus:status}=await request.json();
     const session = await getServerSession(authOptions)
     const name=session!.user!.name
+    const email=session!.user!.email
     await connectMongoDB()
-    await Issue.findByIdAndUpdate(id, {title, description, status, name})
+    await Issue.findByIdAndUpdate(id, {title, description, status, name,email})
     return NextResponse.json({message:`Issue with id: ${id} updated`})
 }
 
