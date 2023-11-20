@@ -9,6 +9,10 @@ const issueSchema= new Schema(
         status:{
             type:String,
             default:"OPEN"
+        },
+        name:{
+            type:String,
+            default:"Anonymous"
         }
     }
     ,{

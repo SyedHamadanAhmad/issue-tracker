@@ -8,7 +8,8 @@ interface issue{
   _id:string,
   title:string,
   description:string,
-  status:string
+  status:string,
+  name:string
 }
 export const getIssues = async()=>{
   try {
@@ -35,15 +36,23 @@ const Issue = async () => {
       return(
         <div key={issue._id} className='flex justify-between border border-slate-700 my-4 p-3 items-start'>
            <div>
+            <div className='flex'>
             <h1 className='font-bold text-xl'>{issue.title}</h1>
+            <h2 className='mx-5 font-extralight'>{issue.name}</h2>
+            </div>
            
+
              
              <p className='mt-3 mx-2 '>{issue.description}</p>
             
             <h2 className="mt-3 mx-2 font-bold"><span className={issue.status==="CLOSED"?"text-green-600":issue.status==="ONGOING"?"text-slate-600":"text-red-600"}>{issue.status}</span></h2>
           
             
+            
+
+            
              </div>
+             
              <div>
    
             
