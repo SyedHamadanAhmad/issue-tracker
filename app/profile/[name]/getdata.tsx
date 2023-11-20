@@ -1,39 +1,39 @@
 import React from 'react'
-import Link from 'next/link'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth'
 import { Container } from '@mui/material'
-import RemoveBtn from './removebtn'
+import RemoveBtn from '@/app/removebtn'
 import {AiTwotoneEdit} from 'react-icons/ai'
+import Link from 'next/link'
 
-interface issue{
+interface Issue{
   _id:string,
   title:string,
   description:string,
-  status:string,
   name:string,
-  email:string
+  email:string,
+  status:string
 }
-export const getIssues = async()=>{
-  try {
-    const res = await fetch('http://localhost:3000/api/Issues', {
-      cache:"no-store",
-    })
-    if(!res.ok){
-      throw new Error('Failed to get Issues')
-    } 
+
+interface Issue extends Array<Issue>{}
+
+
+const GetData = async ({}) => {
+
+ async function getdata(){
+    try {
+      const session=await getServerSession(authOptions)
+      const res=await fetch(`http:localhost:3000/api/profile/${session!.user!.email}`)
+      return res.json()
+    } catch (error) {
+      
+    }
     
-    return res.json()
-
-  } catch (error) {
-    console.log("Error loading topics: ", error)
   }
-
-}
-
-const Issue = async () => {
-  const { issues }=await getIssues();
+  const {issues}:{issues:Issue[]}=await getdata()
   return(
     <Container>
-     {issues.map((issue:issue)=>{
+     {issues.map((issue:Issue)=>{
       return(
         <div key={issue._id} className='flex justify-between border border-slate-700 my-4 p-3 items-start'>
            <div>
@@ -69,6 +69,7 @@ const Issue = async () => {
    
    
   
+
 }
 
-export default Issue
+export default GetData
