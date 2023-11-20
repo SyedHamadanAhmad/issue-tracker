@@ -2,24 +2,28 @@
 import React from 'react'
 import Link from 'next/link'
 import { AiFillBug } from 'react-icons/ai';
-import { useSession } from 'next-auth/react';
-
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Navbar =  () => {
+  
   const {status, data:session}=useSession()
   return (
-    <nav className='bg-slate-700 flex py-4 px-9 justify-between' >
+    <nav className='bg-slate-700 flex py-4 px-9 justify-between items-center' >
+      <div>
+      <Link className="text-white"href={'/create'}>Create issue</Link>
+      </div>
         <div>
-            <Link href={'/'}><AiFillBug style={{color:'white', fontSize:30}}/></Link>
+            <Link href={'/'}><div className='flex'><span className="text-white mx-2">Issue Tracker</span><AiFillBug style={{color:'white', fontSize:30}}/></div></Link>
         </div>
         <div className='flex'>
            
-            <Link className="text-white my-2"href={'/create'}>Create issue</Link>
-            { status==='loading'&& <span className='text-white my-2 mx-2'>Loading...</span>}
-            { status==='authenticated'&& <div className='text-xs flex'>
-              <img className='w-10 h-10 rounded-full mx-3' src={session.user!.image!} alt="profile"/>
+          
+            { status==='loading'&& <span className='text-white mx-2'>Loading...</span>}
+            { status==='authenticated'&& <div className= 'flex'>
+             <div className='flex justify-between items-center'><Link href={`/profile/${session.user!.name}`}><img className='cursor-pointer w-10 h-10 rounded-full mx-3' src={session.user!.image!} alt="profile"/></Link></div>
+             <span className='text-white mx-2 mt-2 cursor-pointer' onClick={()=>{signOut()}}>Sign Out</span> 
               </div>}
-           { status==='unauthenticated'&& <Link className='text-white my-2 mx-2' href={'/api/auth/signin'}>Sign In</Link>}
+           { status==='unauthenticated'&& <span className='cursor-pointer text-white mx-2' onClick={()=>signIn("google")}>Sign In</span>}
             
         </div>
     </nav>
