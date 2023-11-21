@@ -8,7 +8,7 @@ const CreateIssue = () => {
   const [title, setTitle]=useState("")
   const [description, setDescription] =useState("")
   
-  const {status, data:session}=useSession()
+  const {data:session}=useSession()
 
     useEffect(()=>{
       
