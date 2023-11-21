@@ -7,13 +7,15 @@ import { useSession } from 'next-auth/react'
 const CreateIssue = () => {
   const [title, setTitle]=useState("")
   const [description, setDescription] =useState("")
-  const checkAuth=()=>{
+  
+  const {status, data:session}=useSession()
 
     useEffect(()=>{
-      const {status, data:session}=useSession()
+      
       if(!session){redirect('/api/auth/signin')}
-    })
-  }
+    },[])
+  
+  
   const router=useRouter()
 
   const handleSubmit=async (e:FormEvent)=>{
