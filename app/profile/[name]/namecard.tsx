@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NameCard = ({name, email, img}) => {
+const NameCard = ({name, email, img}:{name:string, email:string, img:string}) => {
   return (
     <div className='flex'>
     <img className="h-20" src={img!} alt="profile"/>

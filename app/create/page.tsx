@@ -1,12 +1,19 @@
 'use client'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Container } from '@mui/material'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 const CreateIssue = () => {
   const [title, setTitle]=useState("")
   const [description, setDescription] =useState("")
+  const checkAuth=()=>{
 
+    useEffect(()=>{
+      const {status, data:session}=useSession()
+      if(!session){redirect('/api/auth/signin')}
+    })
+  }
   const router=useRouter()
 
   const handleSubmit=async (e:FormEvent)=>{

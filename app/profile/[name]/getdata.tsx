@@ -23,6 +23,7 @@ const GetData = async ({}) => {
  async function getdata(){
     try {
       const session=await getServerSession(authOptions)
+      
       const res=await fetch(`http:localhost:3000/api/profile/${session!.user!.email}`)
       return res.json()
     } catch (error) {
